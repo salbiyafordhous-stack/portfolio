@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Salbiya Firdhous | Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+    background:url("https://www.pngmagic.com/webp_images/minimalist-black-gradient-background-for-websites_6JZR.webp");
+    color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(2,6,23,0.95);
+    backdrop-filter:blur(10px);
+    padding:14px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transform:translateY(-100%);
+    animation:navSlideDown 0.8s ease forwards;
+}
+
+@keyframes navSlideDown{
+    to{ transform:translateY(0); }
+}
+
+.logo{
+    font-size:1.3rem;
+    font-weight:700;
+    color:#11a8e9;
+}
+
+.navbar ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#dee6e7;
+    font-weight:600;
+    position:relative;
+}
+
+.navbar a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:#11a8e9;
+    transition:0.3s;
+}
+
+.navbar a:hover::after{ width:100%; }
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.typing-text{
+    font-size:2.6rem;
+    border-right:3px solid #fff;
+    padding-right:8px;
+    color:lightcyan;
+}
+
+.hero-subtitle{
+    margin-top:10px;
+    font-size:1.05rem;
+    opacity:0.9;
+}
+
+/* SECTIONS */
+.section{
+    padding:55px;
+    margin:10px auto;
+    background:linear-gradient(120deg,#4f77b2,#0e0d0d);
+    border-radius:12px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.section:hover{
+    transform:translateY(-6px);
+    box-shadow:
+        0 0 15px #bcebec,
+        0 0 30px #b9e9ed,
+        0 0 60px rgba(0,247,255,0.6);
+}
+
+.section h1{
+    color:#04abf2;
+    margin-bottom:25px;
+}
+
+/* SCROLL ANIMATION */
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+}
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* SKILLS GRID */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:15px;
+    max-width:600px;
+    margin:auto;
+}
+
+.skill-card{
+    background:rgba(255,255,255,0.08);
+    padding:20px 15px;
+    border-radius:14px;
+    transition:0.4s;
+    cursor:pointer;
+    box-shadow:0 0 0 rgba(0,0,0,0);
+}
+
+.skill-card img{
+    width:60px;
+    height:60px;
+    margin-bottom:12px;
+}
+
+.skill-card h4{
+    margin-top:6px;
+    font-size:1rem;
+}
+
+/* BRIGHT HOVER EFFECT */
+.skill-card:hover{
+    transform:scale(1.08);
+    box-shadow:
+        0 0 15px #00f7ff,
+        0 0 15px #00f7ff,
+        0 0 30px rgba(0,247,255,0.6);
+    background:rgba(0,247,255,0.15);
+}
+
+/* CARD */
+.card{
+    max-width:950px;
+    margin:30px auto;
+    background:rgba(255,255,255,0.08);
+    border-radius:12px;
+    padding:20px;
+}
+
+/* CERTIFICATES */
+.certificate-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:20px;
+}
+
+.certificate-item{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.certificate-item:hover{ transform:scale(1.05); }
+
+.certificate-item img{
+    width:100%;
+    height:130px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:100px;
+    background:rgba(49, 54, 54, 0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:20;
+}
+
+.modal img{
+    max-width:70%;
+    max-height:80%;
+    border-radius:10px;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    z-index:3000;
+}
+
+.close:hover{
+    color:#11a8e9;
+    transform:scale(1.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">Salbiya Firdhous</div>
+    <ul>
+        <li><a href="#home" onclick="startTyping()">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificates">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1 class="typing-text"></h1>
+        <p class="hero-subtitle">Information Technology Student</p>
+        <p class="hero-subtitle">FULL STACK DEVELOPER</p>
+        <p class="hero-subtitle">Passionate about creating modern & interactive websites</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section hidden" id="about">
+    <h1>About Me</h1>
+    <p>
+        I am a dedicated IT student aspiring to become a professional web developer. <br>
+        currently pursuing my degree at VEL TECH MULTI TECH <br>
+        I specialize in creating responsive and interactive web applications with a strong focus on user experience.<br>
+        I am enthusiastic about learning new technologies, collaborating on innovative projects, and contributing to meaningful digital solutions.
+    </p>
+</section>
+
+<!-- EDUCATION -->
+<section class="section hidden" id="education">
+    <h1>Education</h1>
+
+    <p>
+        Bachelor of Information Technology <br>
+        CGPA: 7.6
+    </p>
+<br>
+<br>
+    <p>
+        Nazareth Matric Hr. Sec. School <br>
+        Percentage: 78%
+    </p>
+</section>
+
+<section class="section hidden" id="skills">
+    <h1>Skills</h1>
+
+    <div class="skills-grid">
+        <div class="skill-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+            <h4>HTML</h4>
+        </div>
+        <div class="skill-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+            <h4>CSS</h4>
+        </div>
+        <div class="skill-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+            <h4>JavaScript</h4>
+        </div>
+        <div class="skill-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png">
+            <h4>C</h4>
+        </div>
+        <div class="skill-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png">
+            <h4>C++</h4>
+        </div>
+        <div class="skill-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png">
+            <h4>Python</h4>
+        </div>
+        <div class="skill-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png">
+            <h4>Java</h4>
+        </div>
+    </div>
+    
+<!-- EXPERIENCE -->
+<section class="section" id="certificates">
+    <h1>Certificates</h1>
+    <div class="card">
+        <div class="certificate-grid">
+
+           <div id="certModal" class="modal">
+    <span class="close" onclick="closeModal()">&#10006;</span>
+    <img id="certImage">
+</div>
+             <div class="certificate-item" onclick="showCertificate(this)">
+    <img src="C:\Users\Dell\Desktop\CERTIFICATE\WhatsApp Image 2026-01-11 at 7.55.52 PM.jpeg">
+    <p>UI/UX Internship</p>
+</div>
+
+            <div class="certificate-item" onclick="showCertificate(this)">
+    <img src="C:\Users\Dell\Desktop\CERTIFICATE\WhatsApp Image 2026-01-11 at 7.55.53 PM (1).jpeg">
+    <p>UI/UX Internship</p>
+        </div>
+
+ <div class="certificate-item" onclick="showCertificate(this)">
+                <img src="C:\Users\Dell\Desktop\CERTIFICATE\WhatsApp Image 2026-01-11 at 7.55.53 PM.jpeg">
+                <p>Effective Business Website</p>
+            </div>
+             <div class="certificate-item" onclick="showCertificate(this)">
+                <img src="c:\Users\Dell\Desktop\CERTIFICATE\WhatsApp Image 2026-01-11 at 7.56.02 PM (1).jpeg">
+                <p>Effective Business Website</p>
+            </div>
+             <div class="certificate-item" onclick="showCertificate('images/business.jpg')">
+                <img src="C:\Users\Dell\Desktop\CERTIFICATE\WhatsApp Image 2026-01-11 at 7.56.02 PM (2).jpeg">
+                <p>Effective Business Website</p>
+            </div>
+             <div class="certificate-item" onclick="showCertificate('images/business.jpg')">
+                <img src="c:\Users\Dell\Desktop\CERTIFICATE\WhatsApp Image 2026-01-11 at 9.53.41 PM.jpeg">
+                <p>Effective Business Website</p>
+            </div>
+             <div class="certificate-item" onclick="showCertificate('images/business.jpg')">
+                <img src="images/business.jpg">
+                <p>Effective Business Website</p>
+            </div>
+             <div class="certificate-item" onclick="showCertificate('images/business.jpg')">
+                <img src="images/business.jpg">
+                <p>Effective Business Website</p>
+            </div>
+             <div class="certificate-item" onclick="showCertificate('images/business.jpg')">
+                <img src="images/business.jpg">
+                <p>Effective Business Website</p>
+            </div>
+            <div class="certificate-item" onclick="showCertificate('images/ai-beginner.jpg')">
+                <img src="images/ai-beginner.jpg">
+                <p>AI For Beginners</p>
+            </div>
+
+            <div class="certificate-item" onclick="showCertificate('images/ai-business.jpg')">
+                <img src="images/ai-business.jpg">
+                <p>AI For Business Professionals</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--INTERN-->
+
+<section class="section" id="certificates">
+    <h1>internship</h1>
+    <div class="card">
+        <div class="certificate-grid">
+            <div id="certModal" class="modal">
+    <span class="close" onclick="closeModal()">&#10006;</span>
+    <img id="certImage">
+            </div>
+   <div class="certificate-item" onclick="showCertificate(this)">
+    <img src="C:/Users/Dell/Downloads/WhatsApp Image 2026-01-11 at 7.55.52 PM (1).jpeg">
+    <p>UI/UX Internship</p>
+</div>
+ <div class="certificate-item" onclick="showCertificate(this)">
+    <img src="C:/Users/Dell/Downloads/WhatsApp Image 2026-01-11 at 7.55.52 PM (1).jpeg">
+    <p>UI/UX Internship</p>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section hidden" id="contact">
+    <h1>Contact</h1>
+    <p>Email: salbiyafordhous@gmail.com<br>
+    LinkedIn: www.linkedin.com/in/salbiya-firdhous-96a250374</p>
+</section>
+
+<!-- MODAL -->
+<div id="certModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="certImage">
+</div>
+</section>
+
+<script>
+/* TYPING EFFECT */
+const text = "Hi! This is Salbiya Firdhous";
+const typing = document.querySelector(".typing-text");
+let i = 0;
+
+function startTyping(){
+    typing.textContent = "";   // clear text
+    i = 0;                     // reset index
+    typeEffect();
+}
+
+function typeEffect(){
+    if(i < text.length){
+        typing.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 90);
+    }
+}
+
+// run typing on page load
+startTyping();
+
+/* RESTART NAVBAR ANIMATION */
+function restartNavbar(){
+    const navbar = document.querySelector(".navbar");
+    navbar.style.animation = "none";
+    navbar.offsetHeight; // force reflow
+    navbar.style.animation = "navSlideDown 0.8s ease forwards";
+}
+
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll(".hidden");
+const skills = document.querySelectorAll(".progress");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < window.innerHeight - 80) {
+            sec.classList.add("show");
+        }
+    });
+
+    skills.forEach(skill => {
+        if (skill.getBoundingClientRect().top < window.innerHeight - 60) {
+            skill.style.width = skill.dataset.width;
+        }
+    });
+});
+
+/* SHOW IMAGE IN MODAL */
+function showCertificate(element){
+    const imgSrc = element.querySelector("img").src;
+    document.getElementById("certImage").src = imgSrc;
+    document.getElementById("certModal").style.display = "flex";
+}
+
+
+function closeModal(){
+    document.getElementById("certModal").style.display="none";
+}
+</script>
+
+</body>
+</html>
